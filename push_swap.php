@@ -4,34 +4,46 @@ include("push_swapController.php");
 
 //instancier ma classe
 
-//instancer une methode
-
-function nombre($nb){
+function nombre($la){
     $lb=[];
+    //instanciation
+    // $truce->sa($la);
+    // echo " ";
+    // $truce->sb($la);
+    // echo " ";
+    // $truce->sc($la,$la);
+    // echo " ";
+    //$truce->pa($la,$la=["20","22","24","26","17"]);
+    // echo " ";
+    // $truce->pb($la,$la=["20","22","24","26","17"]);
+    // echo " ";
+    // $truce->ra($la);
+    // echo " ";
+    // $truce->rb($la);
+    // echo " ";
+    //$truce->rr($la,$lb=["20","22","24","26","17"]);
+    //echo " ";
+    // $truce->rra($la);
+    //echo " ";
+    //$truce->rrb($la);
+    // $truce->rrr($la,$lb=["20","22","24","26","17"]);
+    
     $truce = new Swap();
-    // $truce->sa($nb);
-    // echo " ";
-    // $truce->sb($nb);
-    // echo " ";
-    // $truce->sc($nb,$nb);
-    // echo " ";
-    //$truce->pa($nb,$nb=["20","22","24","26","17"]);
-    // echo " ";
-    // $truce->pb($nb,$nb=["20","22","24","26","17"]);
-    // echo " ";
-    // $truce->ra($nb);
-    // echo " ";
-    // $truce->rb($nb);
-    // echo " ";
-    //$truce->rr($nb,$nb=["20","22","24","26","17"]);
-    //echo " ";
-    // $truce->rra($nb);
-    //echo " ";
-    $truce->rrb($nb);
-    //echo "";
-    echo "\n";
 
+    if(is_array($la)){
+        array_shift($la); // je commence par supprimer la valeur du première index pour obtenir que le tableau de nombre 
+        
+        // foreach($la as $result){
+        //     echo $result."\n";
+        // }
+            if($la[0] > $la[1]){
+                $truce->sa($la);
+            }
+        else echo "";
+    }
+    echo "\n";
+        
 }
-nombre(["1784","12","17","98"]);
+nombre($argv);
 
 ?>
