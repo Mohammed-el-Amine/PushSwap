@@ -11,8 +11,8 @@ class Swap
             $seconde = $la[1];
             $la[0] = $seconde;
             $la[1] = $first;
-            //var_dump($la);
             echo"sa";
+            return $la;
         }
         else echo "";
 

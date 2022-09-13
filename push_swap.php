@@ -4,8 +4,9 @@ include("push_swapController.php");
 
 //instancier ma classe
 
-function nombre($la){
-    $lb=[];
+function nombre($la)
+{
+    $lb = [];
     //instanciation
     // $truce->sa($la);
     // echo " ";
@@ -27,22 +28,17 @@ function nombre($la){
     //echo " ";
     //$truce->rrb($la);
     // $truce->rrr($la,$lb=["20","22","24","26","17"]);
-    
+
     $truce = new Swap();
 
-    if(is_array($la)){
+    if (is_array($la)) {
         array_shift($la); // je commence par supprimer la valeur du première index pour obtenir que le tableau de nombre 
-        
-        // foreach($la as $result){
-        //     echo $result."\n";
-        // }
-            if($la[0] > $la[1]){
-                $truce->sa($la);
-            }
-        else echo "";
+        if ($la[0] > $la[1]) {
+            $result = $truce->sa($la);
+        }
+        else echo ""; print_r($result);
     }
     echo "\n";
-        
 }
 nombre($argv);
 
