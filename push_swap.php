@@ -2,44 +2,64 @@
 //j'include mon fichier controller pour executer ici les fonction dont j'ai besoin
 include("push_swapController.php");
 
-//instancier ma classe
 
-function nombre($la)
+/** Functions from push_swap_controller.php
+ * sa : échange les positions des deux premiers éléments de la (rien ne se produit s’il n’y a pas assez d’éléments).
+ 
+ * sb : échange les positions des deux premiers éléments de lb (rien ne se produit s’il n’y a pas assez d’éléments).
+ 
+ * sc : sa et sb en même temps.
+ * pa : prend le premier élément de lb et le place à la première position de la (rien ne se produit si lb est vide).
+ 
+ * pb : prend le premier élément de la et le place à la première position de lb (rien ne se produit si la est vide).
+ 
+ * ra : fait une rotation de la vers le début. (le premier élément devient le dernier)
+ 
+ * rb : fait une rotation de lb vers le début (le premier élément devient le dernier).
+ 
+ * rr : ra et rb en même temps.
+ 
+ * rra : fait une rotation de la vers la fin. (le dernier élément devient le premier).
+ 
+ * rrb : fait une rotation de lb vers la fin. (le dernier élément devient le premier).
+ 
+ * rrr : rra et rrb en même temps.
+ 
+ * afficher les series d'operations. Exemple : CLI= php push_swap 12 58 40 | cat -e => "sa pb sa$"   **/
+
+
+function truce($la)
 {
-    $lb = [];
-    //instanciation
-    // $truce->sa($la);
-    // echo " ";
-    // $truce->sb($la);
-    // echo " ";
-    // $truce->sc($la,$la);
-    // echo " ";
-    //$truce->pa($la,$la=["20","22","24","26","17"]);
-    // echo " ";
-    // $truce->pb($la,$la=["20","22","24","26","17"]);
-    // echo " ";
-    // $truce->ra($la);
-    // echo " ";
-    // $truce->rb($la);
-    // echo " ";
-    //$truce->rr($la,$lb=["20","22","24","26","17"]);
-    //echo " ";
-    // $truce->rra($la);
-    //echo " ";
-    //$truce->rrb($la);
-    // $truce->rrr($la,$lb=["20","22","24","26","17"]);
 
     $truce = new Swap();
+    $lb = [];
 
-    if (is_array($la)) {
-        array_shift($la); // je commence par supprimer la valeur du première index pour obtenir que le tableau de nombre 
-        if ($la[0] > $la[1]) {
-            $result = $truce->sa($la);
-        }
-        else echo ""; print_r($result);
-    }
+    if ( $sa = $truce->sa($la)) {
+        print_r($la);
+        echo "sa";
+        $la = $sa;
+        echo " ";
+        //var_dump($la);
+        $pb= $truce->pb($la,$lb);
+        echo "pb";
+        $lb = $pb;
+        array_shift($la);
+
+        //print_r($la);
+        //print_r($lb);
+
+    }//echo "\n pour lb\n";print_r($la); echo " pour la\n";print_r($lb);print_r($la);
+
+}
+
+/**
+ * Gestion d'erreur concernant l'appel de la fonction et ses arguments.
+ */
+
+if ($argc > 2) {
+    array_shift($argv);
+    truce($argv);
     echo "\n";
 }
-nombre($argv);
-
+else {echo "\n";}
 ?>

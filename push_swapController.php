@@ -5,36 +5,34 @@ class Swap
 
     public function sa($la)
     {
-        //var_dump($la);
         if (sizeof($la) > 1) {
             $first = $la[0];
             $seconde = $la[1];
             $la[0] = $seconde;
             $la[1] = $first;
-            echo"sa";
             return $la;
         }
-        else echo "";
+        else
+            echo "";
 
     }
     public function sb($lb)
     {
-        //var_dump($lb);
-        if (sizeof($lb) > 0) {
+        if (sizeof($lb) > 1) {
             $first = $lb[0];
             $seconde = $lb[1];
             $lb[0] = $seconde;
             $lb[1] = $first;
-            //var_dump($lb);
-            echo"sb";
+            echo "sb";
+            return $lb;
         }
-        else echo "";
+        else
+            echo "";
     }
     public function sc($la, $lb)
     {
-        //var_dump($lb);
-        //var_dump($la);
-        if (sizeof($la) > 1 && sizeof($lb) > 0) {
+
+        if (sizeof($la) > 1 && sizeof($lb) > 1) {
             $first = $la[0];
             $seconde = $la[1];
             $first_1 = $lb[0];
@@ -43,120 +41,101 @@ class Swap
             $la[1] = $first;
             $lb[0] = $seconde_1;
             $lb[1] = $first_1;
-            //var_dump($lb);
-            //var_dump($la);
-            echo"sc";
+            echo "sc";
         }
-        else echo "";
+        else
+            echo "";
     }
-    public function pa($la,$lb)
+    public function pa($la, $lb)
     {
-        // var_dump($la);
-        // var_dump($lb);
-        if (sizeof($la) > 1 && sizeof($lb) > 0) {
-            array_unshift($la,$lb[0]);
-            // var_dump($la);
-            // var_dump($lb);
-            echo"pa";
+        if (sizeof($lb) > 0) {
+            array_unshift($la, $lb[0]);
+            echo "pa";
+            return $la;
         }
-        else echo "";
+        else
+            echo "";
 
     }
-    public function pb($la,$lb)
+    public function pb($la, $lb)
     {
-        //var_dump($lb);
-        //var_dump($la);
 
         if (sizeof($la) > 2) {
-            array_unshift($lb,$la[0]);
-            //var_dump($lb);
-            //var_dump($la);
-            echo"pb";
+            array_unshift($lb, $la[0]);
+            return $lb;
         }
-        else echo "";
+        else
+            echo "";
     }
     public function ra($la)
     {
-        var_dump($la);
 
-        if (sizeof($la) > 1) {
-            array_push($la,$la[0]);
+        if (sizeof($la) >= 2) {
+            array_push($la, $la[0]);
             unset($la[0]);
-            //var_dump($la);
             echo "ra";
+            return $la;
         }
-        else echo "";
+        else
+            echo "";
 
     }
     public function rb($lb)
     {
-        //var_dump($lb);
-
-        if (sizeof($lb) > 0) {
-            array_push($lb,$lb[0]);
+        if (sizeof($lb) >= 2) {
+            array_push($lb, $lb[0]);
             unset($lb[0]);
-            //var_dump($lb);
-            echo "ra";
+            echo "rb";
+            return $lb;
         }
-        else echo "";
+        else
+            echo "";
 
     }
-    public function rr($la,$lb)
+    public function rr($la, $lb)
     {
-        // var_dump($lb);
-        // var_dump($la);
-        if (sizeof($la) > 1 && sizeof($lb) > 0) {
-            array_push($lb,$lb[0]);
-            array_push($la,$la[0]);
+        if (sizeof($la) >= 2 && sizeof($lb) >= 2) {
+            array_push($lb, $lb[0]);
+            array_push($la, $la[0]);
             unset($lb[0]);
             unset($la[0]);
-            //var_dump($lb);
-            //var_dump($la);
             echo "rr";
-        }       
-        else echo "";
+        }
+        else
+            echo "";
 
     }
 
     public function rra($la)
     {
-        // var_dump($la);
-
-        if (sizeof($la) > 1) {
-            
-            //$last = array_pop($la); // recupère la derniere valeur du tableau
-            array_unshift($la,array_pop($la));
+        if (sizeof($la) >= 2) {
+            array_unshift($la, array_pop($la));
             echo "rra";
-            // var_dump($la);
-    } 
-    else echo "";
+        }
+        else
+            echo "";
 
     }
     public function rrb($lb)
     {
-        //var_dump($lb);
+        if (sizeof($lb) >= 2) {
 
-        if (sizeof($lb) > 0) {
-            
             //$lbst = array_pop($la); // recupère la derniere valeur du tableau
-            array_unshift($lb,array_pop($lb));
+            array_unshift($lb, array_pop($lb));
             echo "rrb";
-            //var_dump($lb);
-    }
-        else echo "";
+        }
+        else
+            echo "";
     }
     public function rrr($la, $lb)
     {
-        // var_dump($la);
-        // var_dump($lb);
-        if(sizeof($la) > 1 && sizeof($lb) > 0){
-            array_unshift($la,array_pop($la));
-            array_unshift($lb,array_pop($lb));
+        if (sizeof($la) >= 2 && sizeof($lb) >= 2) {
+            array_unshift($la, array_pop($la));
+            array_unshift($lb, array_pop($lb));
             echo "rrr";
-            // var_dump($la);
-            // var_dump($lb);
         }
-        else echo "";
+        else
+            echo "";
     }
 
 }
