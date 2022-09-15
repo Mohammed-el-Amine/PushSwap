@@ -50,7 +50,6 @@ class Swap
     {
         if (sizeof($lb) > 0) {
             array_unshift($la, $lb[0]);
-            echo "pa";
             return $la;
         }
         else
