@@ -30,46 +30,44 @@ include("push_swapController.php");
  * Exemple : CLI =  php push_swap 12 58 40 | cat -e => "sa pb sa$"   **/
 
 
-function truce($la)
-{
+// function truce($la)
+// {
 
-    $truce = new Swap();
-    $lb = [];
+//     $truce = new Swap();
+//     $lb = [];
 
-    if ($la[0] > $la[1]) {
-        //print_r($la);
-        $la = $truce->sa($la);
-        echo "sa ";
-        $pb = $truce->pb($la, $lb);
-        $lb = $pb;
-        array_shift($la);
-        echo "pb ";
-    }
-    else {
-    }
-    // print_r($la); //resultat de la
-    // print_r($lb); //resultat de lb
-    if ($la[0] > $la[1]) {
-        $sa = $truce->sa($la);
-        $la = $sa;
-        echo "sa ";
-        $pa = $truce->pa($la, $lb);
-        $la = $pa;
-        array_shift($lb);
-        echo "pa ";
-    }
-    else {
-    }
-    print_r($la);
-    print_r($lb);
+//     if ($la[0] > $la[1]) {
+//         //print_r($la);
+//         $la = $truce->sa($la);
+//         echo "sa ";
+//         $pb = $truce->pb($la, $lb);
+//         $lb = $pb;
+//         array_shift($la);
+//         echo "pb ";
+//     }
+//     else {
+//     }
+//     // print_r($la); //resultat de la
+//     // print_r($lb); //resultat de lb
+//     if ($la[0] > $la[1]) {
+//         $sa = $truce->sa($la);
+//         $la = $sa;
+//         echo "sa ";
+//         $pa = $truce->pa($la, $lb);
+//         $la = $pa;
+//         array_shift($lb);
+//         echo "pa ";
+//     }
+//     else {
+//     }
+//     print_r($la);
+//     print_r($lb);
 
-}
+// }
 
 /**
  * Gestion d'erreur concernant l'appel de la fonction truce($la).
- * 
  */
-
 // if ($argc > 2) {
 //     array_shift($argv);
 //     truce($argv);
@@ -115,37 +113,35 @@ function truce($la)
 // }
 
 function algo($la){
-    $lb= [];
+    $lb = [];
 
     $croissant = new Swap;
     $count = count($la); // me permet de récuperer le nombre d'argument au total
-    if($count === 1); // s'il ne s'agit que d'un chiffre/nombre on ne fais rien
-    elseif($count === 2 && $la[0]> $la[1]) {$la = $croissant->sa($la);echo"sa";}// si seulement deux valeur ont ete entrer on verifie le quel est le plus grand et effectue le changement si necessaire
+    if($count === 1){echo "\n";return;} // s'il ne s'agit que d'un chiffre/nombre on ne fais rien
+    elseif($count === 2 && $la[0]> $la[1]){$la = $croissant->sa($la);echo"sa\n";return;}// si seulement deux valeur ont ete entrer on verifie le quel est le plus grand et effectue le changement si necessaire
     elseif($count >= 3){
-        echo $la[0]."\n";
-        foreach($la as $index =>  $value){
-            $first_position = $la[0];
-            // mon for = pour chaque fois que la[0]>la[1] applique cette fonction
-            while($la[1]<$first_position){
-                $la = $croissant->sa($la);
-                echo "sa";
-            }
-        }
-        echo $first_position;
-
-
-
-
-
-
-
-
-        echo "\n"; // a la fin des operation renvoie un retour a la ligne 
+        $true = true;
+        while($true){
+            if(!empty($la)){
+                for($i=0;$i<=count($la);$i++){
+                    if(isset($la[1])){
+                        if($la[0] > $la[1]){
+                            // print_r($la);
+                            $la = $croissant->sa($la);
+                            echo "sa ";
+                            $lb = $croissant->pb($la,$lb);echo "pb ";
+                            // print_r($la);print_r($lb);
+                            array_shift($la);
+                            
+                        }else $lb = $croissant->pb($la,$lb); echo "pb ";echo"\n";$true = false;
+                    }
+                }
+            }   
+        }print_r($la);print_r($lb);
     }
-    else {return "\n";} // si rien n'est a faire on renvoie juste un retour a la ligne
+    else echo "\n"; // si rien n'est a faire on renvoie juste un retour a la ligne
 }
 
-if ($argc < 2) {throw new Exception ("Merci de renseigner au minimum une valeur en paramètre");} //si aucune valeur n'est renseigner un message d'erreur est renvoyer
-else{array_shift($argv); algo($argv); //arrayshift() => je supprime la premiere valeur qui est passer en argument (celle-ci se trouve etre le nom de mon fichier); algo() => execute mon fichier en utilisant les arguments
-}
+    if ($argc < 2) {throw new Exception ("Merci de renseigner au minimum une valeur en paramètre");} //si aucune valeur n'est renseigner un message d'erreur est renvoyer
+    else{array_shift($argv); algo($argv);} //arrayshift() => je supprime la premiere valeur qui est passer en argument (celle-ci se trouve etre le nom de mon fichier); algo() => execute mon fichier en utilisant les arguments
 ?>

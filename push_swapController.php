@@ -59,12 +59,14 @@ class Swap
     public function pb($la, $lb)
     {
 
-        if (sizeof($la) > 2) {
-            array_unshift($lb, $la[0]);
-            return $lb;
+        if(!empty($la)){
+            if (sizeof($la) > 2) {
+                array_unshift($lb, $la[0]);
+                return $lb;
+            }
+            else
+                echo "";
         }
-        else
-            echo "";
     }
     public function ra($la)
     {
@@ -128,13 +130,15 @@ class Swap
     }
     public function rrr($la, $lb)
     {
-        if (sizeof($la) >= 2 && sizeof($lb) >= 2) {
-            array_unshift($la, array_pop($la));
-            array_unshift($lb, array_pop($lb));
-            echo "rrr";
+        if(!empty($la) && !empty($lb)){
+            if (sizeof($la) >= 2 && sizeof($lb) >= 2) {
+                array_unshift($la, array_pop($la));
+                array_unshift($lb, array_pop($lb));
+                echo "rrr";
+            }
+            else
+                echo "";
         }
-        else
-            echo "";
     }
 
 }
