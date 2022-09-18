@@ -123,25 +123,30 @@ function algo($la){
         $true = true;
         while($true){
             if(!empty($la)){
-                for($i=0;$i<=count($la);$i++){
+                for($i=0;$i<count($la);$i++){
                     if(isset($la[1])){
                         if($la[0] > $la[1]){
-                            // print_r($la);
+                            //print_r($la);
                             $la = $croissant->sa($la);
                             echo "sa ";
                             $lb = $croissant->pb($la,$lb);echo "pb ";
-                            // print_r($la);print_r($lb);
+                            array_shift($la);    
+                            //print_r($la);print_r($lb);
+                        }
+                        else{
+                            $lb = $croissant->pb($la,$lb);
                             array_shift($la);
-                            
-                        }else $lb = $croissant->pb($la,$lb); echo "pb ";echo"\n";$true = false;
+                            echo "pb ";
+                            $true = false;
+                        }
                     }
                 }
-            }   
-        }print_r($la);print_r($lb);
+            }$la = $croissant->sa($la);echo "sa ";$la = $croissant->pa($la,$lb) ;echo "pa ";array_shift($lb);$la = $croissant->pa($la,$lb);array_shift($lb);echo "pa ";$la = $croissant->pa($la,$lb);array_shift($lb);;echo "pa";
+        }//print_r($la);print_r($lb);
     }
-    else echo "\n"; // si rien n'est a faire on renvoie juste un retour a la ligne
+    else echo "\n";
 }
 
-    if ($argc < 2) {throw new Exception ("Merci de renseigner au minimum une valeur en paramètre");} //si aucune valeur n'est renseigner un message d'erreur est renvoyer
-    else{array_shift($argv); algo($argv);} //arrayshift() => je supprime la premiere valeur qui est passer en argument (celle-ci se trouve etre le nom de mon fichier); algo() => execute mon fichier en utilisant les arguments
+    if ($argc < 2) {throw new Exception ("Merci de renseigner au minimum une valeur en paramètre");} 
+    else{array_shift($argv); algo($argv) ;echo "\n";} 
 ?>

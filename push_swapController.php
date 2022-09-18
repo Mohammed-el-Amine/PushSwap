@@ -12,8 +12,7 @@ class Swap
             $la[1] = $first;
             return $la;
         }
-        else
-            echo "";
+        else echo "";
 
     }
     public function sb($lb)
@@ -23,11 +22,9 @@ class Swap
             $seconde = $lb[1];
             $lb[0] = $seconde;
             $lb[1] = $first;
-            echo "sb";
             return $lb;
         }
-        else
-            echo "";
+        else echo "";
     }
     public function sc($la, $lb)
     {
@@ -41,10 +38,8 @@ class Swap
             $la[1] = $first;
             $lb[0] = $seconde_1;
             $lb[1] = $first_1;
-            echo "sc";
         }
-        else
-            echo "";
+        else echo "";
     }
     public function pa($la, $lb)
     {
@@ -52,8 +47,7 @@ class Swap
             array_unshift($la, $lb[0]);
             return $la;
         }
-        else
-            echo "";
+        else echo "";
 
     }
     public function pb($la, $lb)
@@ -64,8 +58,7 @@ class Swap
                 array_unshift($lb, $la[0]);
                 return $lb;
             }
-            else
-                echo "";
+            else echo "";
         }
     }
     public function ra($la)
@@ -74,11 +67,9 @@ class Swap
         if (sizeof($la) >= 2) {
             array_push($la, $la[0]);
             unset($la[0]);
-            echo "ra";
             return $la;
         }
-        else
-            echo "";
+        else echo "";
 
     }
     public function rb($lb)
@@ -86,11 +77,9 @@ class Swap
         if (sizeof($lb) >= 2) {
             array_push($lb, $lb[0]);
             unset($lb[0]);
-            echo "rb";
             return $lb;
         }
-        else
-            echo "";
+        else echo "";
 
     }
     public function rr($la, $lb)
@@ -100,10 +89,8 @@ class Swap
             array_push($la, $la[0]);
             unset($lb[0]);
             unset($la[0]);
-            echo "rr";
         }
-        else
-            echo "";
+        else echo "";
 
     }
 
@@ -111,10 +98,8 @@ class Swap
     {
         if (sizeof($la) >= 2) {
             array_unshift($la, array_pop($la));
-            echo "rra";
         }
-        else
-            echo "";
+        else echo "";
 
     }
     public function rrb($lb)
@@ -123,10 +108,8 @@ class Swap
 
             //$lbst = array_pop($la); // recupère la derniere valeur du tableau
             array_unshift($lb, array_pop($lb));
-            echo "rrb";
         }
-        else
-            echo "";
+        else echo "";
     }
     public function rrr($la, $lb)
     {
@@ -134,10 +117,8 @@ class Swap
             if (sizeof($la) >= 2 && sizeof($lb) >= 2) {
                 array_unshift($la, array_pop($la));
                 array_unshift($lb, array_pop($lb));
-                echo "rrr";
             }
-            else
-                echo "";
+            else echo "";
         }
     }
 
